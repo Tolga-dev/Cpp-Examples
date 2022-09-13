@@ -1,0 +1,12 @@
+# ninja log v5
+0	489	1662564865253481087	CMakeFiles/CppExamplePractices.dir/main.cpp.o	63a0cd4f376205d8
+0	467	1662627192260763701	CMakeFiles/CppExamplePractices.dir/Class/main.cpp.o	fda3cd4778548b3d
+0	43	1663058250906731163	build.ninja	712594a12b3d8315
+1241	1387	1662979483204459635	CppExamplePractices	f5793b034c181eac
+0	456	1662652423782566047	CMakeFiles/CppExamplePractices.dir/ContainerLibPractice.cpp.o	c8dff465fcdeda7
+1	1241	1662979483060457373	CMakeFiles/CppExamplePractices.dir/vector.cpp.o	ec0b7bcd15085129
+1	379	1662211316121514170	CMakeFiles/CppExamplePractices.dir/Declaration/Declaration.cpp.o	32c481abb9215a0
+1	1159	1662977418413851721	CMakeFiles/CppExamplePractices.dir/Declaration/ContainerLibPractice.cpp.o	50548c494a70d48d
+2	45	1663058250906731163	build.ninja	712594a12b3d8315
+1	1290	1663058252206746484	CMakeFiles/CppExamplePractices.dir/vector.cpp.o	ec0b7bcd15085129
+1290	1450	1663058252362748323	CppExamplePractices	f5793b034c181eac
