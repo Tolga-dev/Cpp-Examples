@@ -34,6 +34,6 @@ int main()
     characters.emplace_back(std::move(a));
     print_deque();
     std::cout << a << std::endl;
-    
+
 
 }

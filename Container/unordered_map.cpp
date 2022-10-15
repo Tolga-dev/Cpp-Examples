@@ -83,7 +83,7 @@ void observersa()
 
     std::cout << "this: " << fn ("this") << std::endl;
     std::cout << "thin: " << fn ("thin") << std::endl;
-    
+
     std::unordered_map<int, int> imap = {
             {1,1},
             {1,1}

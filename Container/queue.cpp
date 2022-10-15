@@ -39,7 +39,7 @@ int main()
     print(q);
     print(qx);
 
-    
+
     q.swap(qx);
     print(q);
     print(qx);
