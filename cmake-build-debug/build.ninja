@@ -49,8 +49,8 @@ cmake_ninja_workdir = /home/xamblot/CLionProjects/CppExamplePractices/cmake-buil
 
 build cmake_object_order_depends_target_CppExamplePractices: phony || CMakeFiles/CppExamplePractices.dir
 
-build CMakeFiles/CppExamplePractices.dir/mutual.cpp.o: CXX_COMPILER__CppExamplePractices_Debug /home/xamblot/CLionProjects/CppExamplePractices/mutual.cpp || cmake_object_order_depends_target_CppExamplePractices
-  DEP_FILE = CMakeFiles/CppExamplePractices.dir/mutual.cpp.o.d
+build CMakeFiles/CppExamplePractices.dir/GenericMutexManagement.cpp.o: CXX_COMPILER__CppExamplePractices_Debug /home/xamblot/CLionProjects/CppExamplePractices/GenericMutexManagement.cpp || cmake_object_order_depends_target_CppExamplePractices
+  DEP_FILE = CMakeFiles/CppExamplePractices.dir/GenericMutexManagement.cpp.o.d
   FLAGS = -pthread -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/CppExamplePractices.dir
   OBJECT_FILE_DIR = CMakeFiles/CppExamplePractices.dir
@@ -63,7 +63,7 @@ build CMakeFiles/CppExamplePractices.dir/mutual.cpp.o: CXX_COMPILER__CppExampleP
 #############################################
 # Link the executable CppExamplePractices
 
-build CppExamplePractices: CXX_EXECUTABLE_LINKER__CppExamplePractices_Debug CMakeFiles/CppExamplePractices.dir/mutual.cpp.o
+build CppExamplePractices: CXX_EXECUTABLE_LINKER__CppExamplePractices_Debug CMakeFiles/CppExamplePractices.dir/GenericMutexManagement.cpp.o
   FLAGS = -pthread -g
   OBJECT_DIR = CMakeFiles/CppExamplePractices.dir
   POST_BUILD = :

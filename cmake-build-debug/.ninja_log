@@ -4,6 +4,7 @@
 0	664	1664516830670846226	CMakeFiles/CppExamplePractices.dir/Concurrency_support_library/atomicRef.cpp.o	8a9901acdfcd781f
 0	1089	1663179276128768824	CMakeFiles/CppExamplePractices.dir/map.cpp.o	fbd163d8f71fb8c1
 1	2132	1664137455872660829	CMakeFiles/CppExamplePractices.dir/atomic.cpp.o	3f21ae77ddf76506
+1	825	1665948908254492021	CMakeFiles/CppExamplePractices.dir/mutual.cpp.o	d6e88fbeebdaf31c
 0	373	1663527255461055196	CMakeFiles/CppExamplePractices.dir/main.cpp.o	df28913c02b83df1
 0	467	1662627192260763701	CMakeFiles/CppExamplePractices.dir/Class/main.cpp.o	fda3cd4778548b3d
 1	1077	1663097721625866497	CMakeFiles/CppExamplePractices.dir/forward_list.cpp.o	f1434579d56dffca
@@ -13,8 +14,8 @@
 0	2062	1664096887645386220	CMakeFiles/CppExamplePractices.dir/Concurrency_support_library/threadCanellation.cpp.o	5400b1981665f830
 1	829	1665674385027284901	CMakeFiles/CppExamplePractices.dir/flagTypeAndOperation.cpp.o	c465eb49f2975835
 0	637	1663313744452718483	CMakeFiles/CppExamplePractices.dir/queue.cpp.o	f8c7cb37ecbe32aa
-0	53	1665674674908702059	build.ninja	712594a12b3d8315
-829	906	1665674385107285292	CppExamplePractices	dc7670b9f039d85
+0	53	1665951287730124685	build.ninja	712594a12b3d8315
+825	906	1665948908338492431	CppExamplePractices	b53ba886dcd57691
 0	873	1663844485961020593	CMakeFiles/CppExamplePractices.dir/Concurrency_support_library/yield-get_id-sleep_for-sleep_until.cpp.o	ea90a53dc0bbc84d
 0	760	1663185415804803140	CMakeFiles/CppExamplePractices.dir/multimap.cpp.o	442cb84563a02d14
 0	690	1664517803705436891	CMakeFiles/CppExamplePractices.dir/atomicRef.cpp.o	df2366352359e886
@@ -35,5 +36,5 @@
 1	1159	1662977418413851721	CMakeFiles/CppExamplePractices.dir/Declaration/ContainerLibPractice.cpp.o	50548c494a70d48d
 1	785	1663312059657204644	CMakeFiles/CppExamplePractices.dir/stack.cpp.o	2671b5c0c270626b
 1	2073	1663848269297660758	CMakeFiles/CppExamplePractices.dir/threadCanellation.cpp.o	672ea20868ccdfdb
-0	601	1665674676128708023	CMakeFiles/CppExamplePractices.dir/mutual.cpp.o	d6e88fbeebdaf31c
-602	680	1665674676208708414	CppExamplePractices	b53ba886dcd57691
+0	435	1665951289426132977	CMakeFiles/CppExamplePractices.dir/GenericMutexManagement.cpp.o	acd17aada4d3928e
+435	540	1665951289530133485	CppExamplePractices	d198c97a1617ab13
