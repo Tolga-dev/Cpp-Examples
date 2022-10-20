@@ -6,6 +6,6 @@ set(CMAKE_CXX_STANDARD 23)
 
 set (CMAKE_CXX_FLAGS -pthread)
 
-add_executable(CppExamplePractices Sorting.cpp)
+add_executable(CppExamplePractices DataStructer.cpp)
 
 

@@ -49,8 +49,8 @@ cmake_ninja_workdir = /home/xamblot/CLionProjects/CppExamplePractices/cmake-buil
 
 build cmake_object_order_depends_target_CppExamplePractices: phony || CMakeFiles/CppExamplePractices.dir
 
-build CMakeFiles/CppExamplePractices.dir/Sorting.cpp.o: CXX_COMPILER__CppExamplePractices_Debug /home/xamblot/CLionProjects/CppExamplePractices/Sorting.cpp || cmake_object_order_depends_target_CppExamplePractices
-  DEP_FILE = CMakeFiles/CppExamplePractices.dir/Sorting.cpp.o.d
+build CMakeFiles/CppExamplePractices.dir/DataStructer.cpp.o: CXX_COMPILER__CppExamplePractices_Debug /home/xamblot/CLionProjects/CppExamplePractices/DataStructer.cpp || cmake_object_order_depends_target_CppExamplePractices
+  DEP_FILE = CMakeFiles/CppExamplePractices.dir/DataStructer.cpp.o.d
   FLAGS = -pthread -g -std=gnu++2a
   OBJECT_DIR = CMakeFiles/CppExamplePractices.dir
   OBJECT_FILE_DIR = CMakeFiles/CppExamplePractices.dir
@@ -63,7 +63,7 @@ build CMakeFiles/CppExamplePractices.dir/Sorting.cpp.o: CXX_COMPILER__CppExample
 #############################################
 # Link the executable CppExamplePractices
 
-build CppExamplePractices: CXX_EXECUTABLE_LINKER__CppExamplePractices_Debug CMakeFiles/CppExamplePractices.dir/Sorting.cpp.o
+build CppExamplePractices: CXX_EXECUTABLE_LINKER__CppExamplePractices_Debug CMakeFiles/CppExamplePractices.dir/DataStructer.cpp.o
   FLAGS = -pthread -g
   OBJECT_DIR = CMakeFiles/CppExamplePractices.dir
   POST_BUILD = :
