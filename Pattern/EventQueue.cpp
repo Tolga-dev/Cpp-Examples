@@ -1,3 +1,7 @@
-//
-// Created by xamblot on 12/10/22.
-//
+#include <iostream>
+
+
+int main()
+{
+
+}

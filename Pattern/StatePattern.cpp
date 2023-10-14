@@ -80,6 +80,7 @@ public:
 private:
     State * state;
 };
+
 void Attempt1()
 {
     Context * context = new Context();
@@ -93,9 +94,10 @@ void Attempt1()
 }
 
 
+
 int main()
 {
-
+    Attempt1();
 
     return 0;
 }
