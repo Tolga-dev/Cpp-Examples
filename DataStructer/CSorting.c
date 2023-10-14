@@ -337,7 +337,6 @@ void Heap(unsigned long arr[], int S)
 
     }
 
-
 }
 
 double get_wall_time(){

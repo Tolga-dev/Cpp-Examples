@@ -28,15 +28,34 @@ struct tree *insert(struct tree* node, int data)
     node->left = insert(node->left,data);
     return node;
 }
-void print(struct tree *t)
+
+void InOrderprint(struct tree *t)
 {
     if(t == NULL)
         return;
-    print(t->left);
+    InOrderprint(t->left);
     std::cout << t->data << " ";
-    print(t->right);
-
+    InOrderprint(t->right);
 }
+void PreOrder(struct tree * t)
+{
+    if(t == nullptr)
+        return;
+
+    std::cout << t->data << " ";
+    PreOrder(t->left);
+    PreOrder(t->right);
+}
+void PostOrder(struct tree * t)
+{
+    if(t == nullptr)
+        return;
+
+    PreOrder(t->left);
+    PreOrder(t->right);
+    std::cout << t->data << " ";
+}
+
 int find(struct tree* node, int t)
 {
     if(node == nullptr)
@@ -48,7 +67,9 @@ int find(struct tree* node, int t)
     else
         find(node->left,t);
 
+    return 0;
 }
+
 int max(struct tree* node)
 {
     while(node->right != nullptr)
@@ -61,19 +82,60 @@ int min(struct tree* node)
         node = node->left;
     return node->data;
 }
+int PrintLevel(struct tree *node, int t, int level)
+{
+    if(node == nullptr)
+    {
+        std::cout << " not found! " << std::endl;
+        return -1;
+    }
+    if (node->data == t)
+        return level;
+    else if(node->data < t)
+        level = PrintLevel(node->right,t,level + 1);
+    else
+        level = PrintLevel(node->left,t,level + 1);
+
+        return level;
+
+
+}
+/*
+if (t == NULL)
+    return 0;
+
+if (t->data == number)
+    return level;
+
+int downlevel = PrintLevel(t->left, number, level + 1);
+
+if (downlevel != 0)
+    return downlevel;
+
+ return PrintLevel(t->right, number, level + 1);
+ */
 
 int main()
 {
     struct tree *t = nullptr;
 
-    t = insert(t,12);
     t = insert(t,6);
-    t = insert(t,28);
-    t = insert(t,27);
+    t = insert(t,2);
+    t = insert(t,8);
+    t = insert(t,1);
+    t = insert(t,4);
+    t = insert(t,3);
+    t = insert(t,5);
 
-    std::cout << find(t, 28) << std::endl;
+    std::cout << PrintLevel(t,4,0) << std::endl;
+
+/*    PostOrder(t);
+    InOrderprint(t);
+    PreOrder(t);*/
+
+/*    std::cout << find(t, 28) << std::endl;
     std::cout << find(t, 6) << std::endl;
-    std::cout << find(t, 26) << std::endl;
+    std::cout << find(t, 26) << std::endl;*/
 
 
     return 0;

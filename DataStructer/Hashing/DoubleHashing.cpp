@@ -35,7 +35,6 @@ void hashing(int table[], int size, int arr[], int N)
         }
     }
 }
-
 void out(int arr[], int n)
 {
     for (int i = 0; i < n; i++) {
@@ -45,16 +44,18 @@ void out(int arr[], int n)
 
 int main()
 {
-    int arr[] = { 50, 700, 76, 85, 92, 73, 101,123,120,11};
+    int N = 10;
 
-    int hash_table[10];
+    int arr[] = { 11,11,11,2,3,5,5,5};
 
-    for (int i = 0; i < 10; i++) {
+    int hash_table[N];
+
+    for (int i = 0; i < N; i++) {
         hash_table[i] = -1;
     }
 
-    hashing(hash_table, 10, arr, 10);
-    out(hash_table, 10);
+    hashing(hash_table, N, arr, N);
+    out(hash_table, N);
 
 
     return 0;
