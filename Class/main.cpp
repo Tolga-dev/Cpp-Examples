@@ -608,88 +608,95 @@ void cDestructer()
     }
     delete px;
 }
-
-// copy constructer
-struct copyConstructer
-{
-    int x;
-
-    copyConstructer(int i, int j) : x(i) {};
-    copyConstructer();
-    copyConstructer(copyConstructer& cC){}
-
-};
-
-void copyConstructerFunction()
-{
-    copyConstructer cpO(1,2);
-    copyConstructer cp1 = cpO;
-    copyConstructer cp2(cpO);
-
-}
-
-// copy assignment
-struct copyAssignment
-{
-    copyAssignment& operator= (copyAssignment cA)
-    {
-        copyAssignment* p = &cA;
-        std::cout << p <<" cA is copied to " << this << std::endl;
-        return *this;
-    }
-};
-void copyAssignmentFUnc()
-{
-    copyAssignment cA;
-    copyAssignment cAA;
-    copyAssignment *p = &cAA;
-    copyAssignment *pc = &cA;
-    cA= cAA;
-
-    std::cout << p << "  " <<pc << std::endl;
-}
-// move constructer
-
-class MoveConstruct
-{
-public:
-    int* dataP;
-
-    MoveConstruct(int data)
-    {
-        int a;
-        data = a;
-        *dataP = data;
-        std::cout << "constructer is called for " << data << std::endl;
-
-    }
-    MoveConstruct(const MoveConstruct& source) : MoveConstruct( *source.dataP )
-    {
-        std::cout << "Copy Constructor is called -"
-                   << "Deep copy for "
-                   << *source.dataP
-                   << std::endl;
-    }
-    MoveConstruct(MoveConstruct&& source) : dataP{source.dataP}
-    {
-
-        std::cout << "Move Constructor for "
-             << *source.dataP << std::endl;
-        source.dataP = nullptr;
-    }
-
-};
-void moveCOntrocturFonkstion()
-{
-    int dataP = 5;
-    MoveConstruct moveConstruct(dataP);
-
-    moveConstruct.dataP = &dataP;
-    MoveConstruct moveConstructCopy = std::move(moveConstruct);
-
-
-}
 */
+
+namespace CopyAssignmentOperatorExamples
+{
+    namespace E1
+    {    // Trivial - automatically added by compiler
+
+
+        class Bar
+        {
+        public:
+            explicit Bar(int x) : x(x) {}
+
+            void operator<<(std::ostream &outStream) const
+            {
+                outStream << this->x << std::endl;
+            }
+            int x;
+
+        };
+        void Runner()
+        {
+            Bar bar(2);
+            Bar foo = bar;
+            foo<<std::cout;
+            bar<<std::cout;
+
+        }
+    }
+    namespace E2
+    {    // Eligible - added by user
+
+        class Bar
+        {
+        public:
+            explicit Bar(int x) : x(x) {}
+
+            Bar(const Bar& bar)
+            {
+                this->x = bar.x;
+                std::cout << "Copy constructor is called" << std::endl;
+            }
+
+            void operator<<(std::ostream &outStream) const
+            {
+                outStream << this->x << std::endl;
+            }
+            int x;
+
+        };
+        void Runner()
+        {
+            Bar bar(2);
+            const Bar& foo(bar);
+            foo<<std::cout;
+            bar<<std::cout;
+
+        }
+    }
+    namespace E3
+    {    // Delete
+
+        class Bar
+        {
+        public:
+            explicit Bar(int x) : x(x) {}
+
+            Bar(const Bar& bar)=delete;
+
+            void operator<<(std::ostream &outStream) const
+            {
+                outStream << this->x << std::endl;
+            }
+
+            int x;
+
+        };
+        void Runner()
+        {
+            const Bar bar(2);
+           // const Bar foo(bar); // error
+
+            //foo<<std::cout;
+
+            bar<<std::cout;
+
+        }
+    }
+}
 
 //move assignment operator
 //move constructor is used to efficiently transfer ownership of resources( dynamic memory allocated using new)
@@ -860,10 +867,17 @@ namespace MoveAssignmentOperatorExamples
             std::cout  << b.data[0] << " " << (a.data == nullptr) << std::endl;
         }
     }
+
 }
 
 int main() {
-    MoveAssignmentOperatorExamples::E1::Runner();
+
+   // MoveAssignmentOperatorExamples::E1::Runner();
+    // CopyAssignmentOperatorExamples::E3::Runner();
+
+
+
+
 //    copyAssignmentFUnc();
 //    copyConstructerFunction();
 
