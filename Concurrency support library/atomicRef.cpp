@@ -3,12 +3,6 @@
 #include <thread>
 #include <vector>
 
-/*
-bigo  notiation
-sorting alggoritnhm insertion selection
-buble merge
-sorting olacak genelde o yuzden problem olmayabilir
-*/
 
 void doit(int& a, int& b)
 {
