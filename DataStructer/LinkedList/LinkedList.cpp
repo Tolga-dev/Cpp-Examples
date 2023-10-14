@@ -21,48 +21,52 @@ void Creation(int NewGdata)
     head = newGen;
 
 }
+
 void printNodesData()
 {
     struct LinkedList *r = head;
-    while(r != NULL)
+    while(r->next != NULL)
     {
-        printf("data:  %d \n", r->id);
+        printf("data:  %d \n", r->data);
         r = r->next;
     }
     printf(" finished \n");
 }
-void DeleteNode(int i)
+
+void beginInsert(int data)
 {
-    struct LinkedList *r = head,*n = NULL, *len = head;
-    int size;
-    while(len != NULL)
+    struct LinkedList *node = (struct LinkedList*) malloc(sizeof(struct LinkedList*));
+
+    node->data = data;
+    node->next = head;
+    head = node;
+}
+
+void DeleteNode(int loc)
+{
+    struct LinkedList *ptr,*ptr1;
+    int i;
+    ptr=head;
+    for(i=0;i<loc;i++)
     {
-        size++;
-        len = len->next;
+        ptr1 = ptr;
+        ptr = ptr->next;
+
+        if(ptr == NULL)
+        {
+            printf("\nCan't delete");
+            return;
+        }
     }
-    i = size - i;
-
-    while(i-- > 1)
-    {
-        n = r;
-        r = r->next;
-
-    }
-    n->next = r->next;
-    free(r);
-
-    printf(" finished \n");
-
+    ptr1 ->next = ptr ->next;
+    free(ptr);
 }
 
 int main()
 {
 
-    
-
-    // An algorithm is a set of instructions to be followed to solve a problem.
-    // two aspects of algorithmic performance : running time and space
     head = (struct LinkedList*) malloc(sizeof(struct LinkedList));
+
     printf("start \n");
     Creation(3);
     Creation(354);
@@ -70,10 +74,24 @@ int main()
     Creation(54);
     Creation(35);
     Creation(4);
-    DeleteNode(0);
+    beginInsert(9);
+    printNodesData();
+    DeleteNode(2);
     printNodesData();
 
 
     return 0;
 
 }
+/*
+start
+data:  34
+data:  2
+data:  354
+data:  3
+ finished
+data:  34
+data:  2
+data:  3
+ finished
+ */
