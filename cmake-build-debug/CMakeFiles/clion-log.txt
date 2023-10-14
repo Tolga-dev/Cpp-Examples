@@ -1,7 +1,7 @@
 /home/xamblot/.local/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/xamblot/Downloads/CLion/clion-2022.1.3/bin/ninja/linux/ninja -G Ninja -S /home/xamblot/CLionProjects/CppExamplePractices -B /home/xamblot/CLionProjects/CppExamplePractices/cmake-build-debug
+Enabled Test Catch2
+-- Found SFML 2.5.1 in /usr/lib/x86_64-linux-gnu/cmake/SFML
+yeap
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/xamblot/CLionProjects/CppExamplePractices/cmake-build-debug
-
-Problems were encountered while collecting compiler information:
-	c++: error: unrecognized command-line option '-pthread_barrier'
