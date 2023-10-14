@@ -1,8 +1,7 @@
 #include <iostream>
 
-#include "../Declaration/Declaration.h"
-
 //static member functions
+/*
 
 struct StaticDataStruct
 {
@@ -36,6 +35,7 @@ struct staticStruct
     static int n;
 };
 staticStruct f(){ return staticStruct();} //returning staticStruct
+*/
 /*
 void g()
 {
@@ -44,7 +44,8 @@ void g()
     f().returnStaticStruct();
     f().n = 5;
 }
-*/
+*//*
+
 // static ok with public private protected
 
 struct PublicPrivateClass //public private
@@ -237,19 +238,23 @@ struct structk
     int n;
     void f();
 };
+*/
 /*
 void structk::f()
 {
     n = 1;
     a = 2;
 }
+*//*
+
 */
 /*
 void getMemberFu()
 {
     structk s1;
     s1.f();
-}*/
+}*//*
+
 
 // the this pointer
 class outer
@@ -363,6 +368,7 @@ void ArgumanetOperator()
     cout<<"ASD";
 }
 //Argument-dependent lookup with friend
+*/
 /*
 template<typename T>
 struct number
@@ -377,7 +383,8 @@ void g()
     a = gcd(a, b);
     ab(a,b);
 }
- */
+ *//*
+
 //Argument-dependent lookup with namespace
 namespace loopUp1
 {
@@ -391,18 +398,21 @@ namespace loopUp2
     template<int T>
     void a(S);
 }
+*/
 /*
 void loopUp1Fonk(loopUp1::S s, loopUp2::S b)
 {
    a<3>(s);
    loopUp2::a<3>(b);
 }
- */
+ *//*
+
 //qualified loop up
 struct cout
 {
     static int s;
 };
+*/
 /*
 void Qualified()
 {
@@ -418,7 +428,8 @@ void Qualified()
 
 }
 
-*/
+*//*
+
 //class member look up
 struct A{ A();};
 struct B : A { B();};
@@ -459,13 +470,15 @@ struct overloadedStructB
 };
 overloadedStruct overloadedStructc;
 overloadedStructB overloadedStructBc;
+*/
 /*
 void overloadedStructB::f()
 {
     overloadedStructB::operator-(overloadedStructBc);
     overloadedStructc - overloadedStructc;
 }
- */
+ *//*
+
 //continue elaborated
 class elaboratedclas
 {
@@ -481,6 +494,7 @@ void elaboratedclasFUnction()
     ::elaboratedclas esc;
 }
 //continue friend
+*/
 /*
 class F{};
 void functionsfriend();
@@ -495,7 +509,8 @@ void friends()
     };
     class F {}; // local F
 }
- */
+ *//*
+
 //template friends
 template<class T>
 class Aprimary{};
@@ -674,39 +689,181 @@ void moveCOntrocturFonkstion()
 
 
 }
+*/
 
 //move assignment operator
-struct MoveOperator
+//move constructor is used to efficiently transfer ownership of resources( dynamic memory allocated using new)
+// it used to reduce copying data and improving performance
+namespace MoveAssignmentOperatorExamples
 {
-    std::string s;
-    MoveOperator() :s("test") {}
-    MoveOperator(const MoveOperator& moveO) : s(moveO.s) { std::cout << " moved fail!" << '\n';};
-    MoveOperator(MoveOperator&& moveOperator) : s(std::move(moveOperator.s)){ std::cout << " moved!" << '\n'; }
-    MoveOperator& operator = (const MoveOperator& select)
+    namespace E1
     {
-        s = select.s;
-        std::cout << " copy! " << '\n';
-        return *this;
+        class MoveOperator // general example for move operator
+        {
+        public:
+            size_t size{};
+            int* data{};
+            std::string name;
+
+            MoveOperator(size_t size, std::string& name) :name(name),size(size),data(new int[size]) {
+                for (size_t i = 0; i < size; i++) {
+                    data[i] = i * 2;
+                }
+                std::cout << "Constructor called." << std::endl;
+            }
+
+            MoveOperator(const MoveOperator& bar) : name(bar.name), size(bar.size), data(new int[bar.size])
+            {
+                for (size_t i = 0; i < size; ++i) {
+                    data[i] = bar.data[i];
+                }
+                std::cout << "Copy constructor is called" << std::endl;
+            };
+
+            MoveOperator(MoveOperator&& bar) noexcept : name(std::move(bar.name)), size(bar.size), data(new int[bar.size])
+            {
+                bar.size = 0;
+                bar.name = "";
+                bar.data = nullptr;
+                std::cout << "Move Constructor is called !" << '\n';
+            }
+
+            MoveOperator& operator=(MoveOperator&& select) noexcept
+            {
+                if(this != &select)
+                {
+                    data = select.data;
+                    size = select.size;
+                    name = select.name;
+
+                    select.size = 0;
+                    select.name = "";
+                    select.data = nullptr;
+                }
+                std::cout << "Move Assignment is called !" << '\n';
+                return *this;
+            }
+
+            MoveOperator& operator=(const MoveOperator& select)
+            {
+                if(this == &select) {
+                    return *this;
+                }
+
+                    data = select.data;
+                    size = select.size;
+                    name = select.name;
+
+                std::cout << "Copy Assignment is called !" << '\n';
+                return *this;
+            }
+        };
+
+        void Runner()
+        {
+            std::string name = "test";
+            MoveOperator foo(10, name);
+//            MoveOperator bar(foo);
+            MoveOperator bar = foo;
+
+            MoveOperator dum = std::move(foo);
+            MoveOperator mud(std::move(bar));
+
+            std::cout << foo.name << " " << foo.size << "  " << bar.name << " " << bar.size << std::endl;
+
+        }
+
     }
-    MoveOperator& operator = (MoveOperator&& select)
+    namespace E2
     {
-        s = std::move(select.s);
-        std::cout << " move! " << '\n';
-        return *this;
+        class foo // Implicitly-Defined Move Constructor
+        {
+        public:
+            foo(){ };
+            std::string temp;
+            int* dummy;
+        };
+
+        void Runner()
+        {
+            int dum = 5;
+            foo fo;
+            fo.temp = "foo";
+            fo.dummy = &dum;
+
+            foo bar(std::move(fo));
+            bar.temp = "bar";
+
+            std::cout << fo.temp << " " << bar.temp << std::endl; // empty " " bar
+            std::cout << fo.dummy << " " << bar.dummy << std::endl; // same address
+
+
+        }
     }
-};
-void MoveConstructFunction()
-{
-    MoveOperator moveOperator;
+    namespace E3
+    {
+        // deleted move constructor
+        class NoMove // it can't generate move constructor by compiler
+        {
+        public:
+            NoMove()= default;
+            NoMove(const NoMove&) = default;
 
-    MoveOperator moveOperatorCopy;
+            NoMove& operator=(const NoMove&) {return *this;}
 
-    moveOperator = std::move(moveOperatorCopy);
+            NoMove(NoMove&&) = delete; // delete move constructor
 
+        };
+        void Runner()
+        {
+            NoMove x;
+          //  NoMove y = std::move(x); // error : Attempting moving x to y;
+        }
+    }
+    namespace E4
+    {
+        class Trivial // move constructor are automatically generated when no custom constructors are defined
+        {
+        public:
+            Trivial() : data(new int[5]) { data[0] = 10;}
+
+            int *data;
+
+        };
+        void Runner()
+        {
+            Trivial a;
+            Trivial b = std::move(a);
+
+            std::cout  << b.data[0] << std::endl;
+        }
+    }
+    namespace E5
+    {
+        class Eligible
+        {
+        public:
+            Eligible() : data(new int[5]) { data[0] = 10;}
+            Eligible(Eligible&& local)  noexcept : data{local.data}
+            {
+                local.data = nullptr;
+            }
+            ~Eligible(){ delete[] data;}
+            int *data;
+
+        };
+        void Runner()
+        {
+            Eligible a;
+            Eligible b = std::move(a);
+
+            std::cout  << b.data[0] << " " << (a.data == nullptr) << std::endl;
+        }
+    }
 }
-int main() {
 
-//    MoveConstructFunction();
+int main() {
+    MoveAssignmentOperatorExamples::E1::Runner();
 //    copyAssignmentFUnc();
 //    copyConstructerFunction();
 
